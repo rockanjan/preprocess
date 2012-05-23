@@ -29,14 +29,14 @@ public abstract class FeatureGeneratorBase {
 	protected static final String YES = "Y";
 	protected static final String NO = "N";
 	protected static final String NO_ARG = "O";
-	protected static final String NO_PATH = "NO_PATH";
-	protected static final String NO_SUFFIX = "NO_SUF";
-	protected static final String NO_HMM = "NO_HMM";
-	protected static final String NO_WORD = "NO_WORD";
-	protected static final String NO_HMM1 = "NO_HMM1";
-	protected static final String NO_WORD1 = "NO_WORD1";
-	protected static final String NO_HMM2 = "NO_HMM2";
-	protected static final String NO_WORD2 = "NO_WORD2";
+	protected static final String NO_PATH = "NPTH";
+	protected static final String NO_SUFFIX = "NSF";
+	protected static final String NO_HMM = "NH";
+	protected static final String NO_WORD = "NW";
+	protected static final String NO_HMM1 = "NH1";
+	protected static final String NO_WORD1 = "NW1";
+	protected static final String NO_HMM2 = "NH2";
+	protected static final String NO_WORD2 = "NW2";
 	
 	private String inputFilename;
 	private String outputFilename;
