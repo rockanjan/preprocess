@@ -85,8 +85,8 @@ public class DataRow {
 	/* variadic function */
 	public String getRowWithAppendedFeatureNew(String... features) {
 		StringBuilder sb = new StringBuilder();
-		//sb.append(word.toLowerCase() + " ");
-		sb.append(VocabIndexReader.getIndex(word));
+		sb.append(word.toLowerCase() + " ");
+		sb.append(VocabIndexReader.getIndex(word) + " ");
 		sb.append(Stemmer.stemWord(word.toLowerCase()) + " ");
 		sb.append(predicateLabel + " ");
 		sb.append(intervenes + " ");
