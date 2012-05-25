@@ -94,10 +94,10 @@ public class DataRow {
 		sb.append(hmmState2 + " ");
 		sb.append(hmmState + "+" + hmmState2 + " ");
 		for(String feature: features){
-			sb.append(feature.toLowerCase() + " ");
+			sb.append(feature + " ");
 		}
 		sb.append(identificationLabel + " ");
-		sb.append(classificationLabel + " ");
+		//sb.append(classificationLabel + " ");
 		return sb.toString();
 	}
 	

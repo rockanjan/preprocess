@@ -46,6 +46,7 @@ public class VocabIndexReader {
 			}
 		}
 		br.close();
+		System.out.println("Vocab Size: " + vocabIndex.size());
 		System.out.println("Done");
 	}
 	

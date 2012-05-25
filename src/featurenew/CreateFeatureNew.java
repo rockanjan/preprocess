@@ -8,7 +8,7 @@ public class CreateFeatureNew {
 			System.err.println("Usage: <createfeaturenew> inputfile outputfile");
 			System.exit(1);
 		}
-		String vocabIndexFile = "/work/srl/propprocess/biocommaprocessed/vocab_index_for_feature.txt";
+		String vocabIndexFile = "/home/anjan/Dropbox/vocab_index_final.txt";
 		VocabIndexReader.__init__(vocabIndexFile);
 		FeatureNew generator = new FeatureNew(args[0], args[1]);
 		System.out.println("Running FeatureNew generator");

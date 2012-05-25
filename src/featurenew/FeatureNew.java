@@ -90,6 +90,9 @@ public class FeatureNew extends FeatureGeneratorBase {
 				String[] verbSpecific = getVerbSpecific(s, verbWordIndex);
 				String verbHmm = verbSpecific[0];
 				String verbWord = verbSpecific[1];
+				if(! verbSpecific.equals(FeatureGeneratorBase.NO_VERB) ) {
+					verbWord = VocabIndexReader.getIndex(verbSpecific[1]) + "";
+				}
 				String verbStemmedWord = verbSpecific[2];
 				String verbOneSuffix = verbSpecific[3];
 				String verbTwoSuffix = verbSpecific[4];
@@ -112,8 +115,8 @@ public class FeatureNew extends FeatureGeneratorBase {
 						oneWordOneHmm, twoWords, threeHmms, twoHmmsWord,
 						oneHmmsTwoWord, oneHmmOneWordOneHmm,
 
-						verbHmm, verbWord, verbStemmedWord, verbOneSuffix,
-						verbTwoSuffix));
+						verbHmm, verbWord.toLowerCase(), verbStemmedWord.toLowerCase(), verbOneSuffix.toLowerCase(),
+						verbTwoSuffix.toLowerCase()));
 
 			}
 			pw.println();
