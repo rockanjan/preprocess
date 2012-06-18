@@ -49,7 +49,9 @@ public class VocabIndexReader {
 		System.out.println("Vocab Size: " + vocabIndex.size());
 		System.out.println("Done");
 	}
-	
+	/*
+	 * returns OOV index if not found
+	 */
 	public static int getIndex(String queryWord){
 		if(vocabIndex == null){
 			System.err.println("Vocab Index is not initialized");
