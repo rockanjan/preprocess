@@ -17,7 +17,9 @@ import java.util.Map;
 /*
  * Input: Takes in data with each token separated by new line
  * and sentences separated by a blank line
- * Output: Generates the integer sequence representation suitable for jahmm
+ * Output: Generates the integer sequence representation suitable for jahm
+ * 
+ * 
  */
 public class ConvertToIntegerSequence {
 	static final int SIZE = 50000;
