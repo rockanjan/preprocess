@@ -5,10 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import featurenew.VocabIndexReader;
-
 public class ConvertToIntegerSequenceUsingVocab {
 	public static void main(String[] args) throws IOException{
+/*
 		String vocabFile = "/home/anjan/Dropbox/research/vocab_index_final.txt";
 		String inputFile = "/home/anjan/Dropbox/research/combined.words";
 		String outputFile = "/home/anjan/Dropnox/research/combined-sequence.jahmm";
@@ -32,5 +31,6 @@ public class ConvertToIntegerSequenceUsingVocab {
 				pw.println();
 			}
 		}
+*/
 	}
 }

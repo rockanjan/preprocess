@@ -8,13 +8,18 @@ import java.io.PrintWriter;
 
 public class CreatePropFromClassPrediction {
 	public static void main(String[] args) throws IOException{
-		
 		String goldPropFile = "/home/anjan/Dropbox/research/srl/dev/final/gold/dev-set.nopunct.trunc50.prop";
 		String originalPropProcessedFile = "/home/anjan/Dropbox/research/srl/dev/final/dev.propprocesssed";
+		
+		/*
 		String originalFile = "/home/anjan/work/srl/jul11/dev.classification";
 		String taggedFile = "/home/anjan/work/srl/jul11/dev.classification.tagged";
+		*/
 		
-		String outFile = "/home/anjan/work/srl/jul11/dev.predicted.prop";
+		String originalFile = "/home/anjan/work/srl/jul11/dev.predictediob.classification";
+		String taggedFile = "/home/anjan/work/srl/jul11/dev.classification.withpredictedbio.tag";
+		
+		String outFile = "/home/anjan/work/srl/jul11/dev.predicted.withpredictedbio.prop";
 		BufferedReader brOrg = new BufferedReader(new FileReader(originalFile));
 		BufferedReader brTagged = new BufferedReader(new FileReader(taggedFile));
 		
