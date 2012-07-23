@@ -48,7 +48,7 @@ public class CountMaxSentenceLength {
 	}
 
 	public static void main(String[] args) throws IOException {
-		String inFile = "/home/anjan/work/srl/jul11/hmms/combined.words.hmm";
+		String inFile = "/home/anjan/Dropbox/research/srl/dev/evaluation/combined.word.pos.prop";
 		System.out.println("In File " + inFile);
 		CountMaxSentenceLength rp = new CountMaxSentenceLength(inFile);
 		rp.run();
