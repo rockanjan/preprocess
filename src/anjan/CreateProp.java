@@ -12,15 +12,15 @@ import java.util.ArrayList;
  * POS, intervene won't be used
  */
 public class CreateProp {
-	static int LEN = 50;
+	static int LEN = 200;
 	public static void main(String[] args) throws IOException{
-		
-		if(args.length != 1){
-			System.err.println("Usage: <program> input-file");
+		int spaceSize = 10;
+		if(args.length != 2){
+			System.err.println("Usage: <program> input-file org-eval-prop-file");
 			System.exit(1);
 		}
 		//count of each sentence
-		String countFile = args[0] + ".count";
+		String countFile = "/tmp/count";
 		CountMultipleSentence cms = new CountMultipleSentence(args[0], countFile);
 		
 		cms.run();
@@ -39,6 +39,8 @@ public class CreateProp {
 		countReader.close();
 		File out = new File(args[0] + ".prop");
 		PrintWriter p = new PrintWriter(out);
+		String tmpFile = "/tmp/prop.tmp";
+		PrintWriter tmpP = new PrintWriter(tmpFile);
 		BufferedReader inputReader = new BufferedReader(new FileReader(args[0]));
 		
 		ArrayList<Sentence> data = new ArrayList<Sentence>();
@@ -172,24 +174,74 @@ public class CreateProp {
 			for(int i=0; i<sentenceLength; i++){
 				if(hasAtLeastOneVerb){
 					for(int j=0; j<count+1; j++){
-						p.print(sentenceProp[i][j] + " ");
+						tmpP.print(sentenceProp[i][j] + " ");
 						if(j != count ){
 							for(int k=0; k< (10 - sentenceProp[i][j].length()); k++){
-								p.print(" ");
+								tmpP.print(" ");
 							}
 						}
 					}
-					p.println();
+					tmpP.println();
 				} else {
-					p.println(sentenceProp[i][0]);
+					tmpP.println(sentenceProp[i][0]);
 				}
 			}
-			p.println();
+			tmpP.println();
+		}
+		tmpP.flush();
+		tmpP.close();
+		inputReader.close();
+		//Now replace the verb words
+		String lineOrg = "";
+		String lineNew = "";
+		
+		BufferedReader brOrg = new BufferedReader(new FileReader(args[1]));
+		BufferedReader brNew = new BufferedReader(new FileReader(tmpFile));
+		int lineNumber = 0;
+		while( (lineOrg = brOrg.readLine()) != null) {
+			lineNumber++;
+			lineNew = brNew.readLine();
+			lineOrg = lineOrg.trim();
+			lineNew = lineNew.trim();
+			if(lineOrg.equals("")) {
+				if(! lineNew.equals("")) {
+					System.err.println("Original and Created prop files do not align at line " + lineNumber);
+					System.exit(1);
+				}
+				p.println();
+			} else {
+				String[] splittedNew = lineNew.split("(\\s+|\\t+)");
+				String[] splittedOrg = lineOrg.split("(\\s+|\\t+)");
+				if(splittedNew.length != splittedOrg.length) {
+					System.err.println("The columns for the original prop sentence and new prop sentence do not align at line " + lineNumber);
+					System.exit(1);
+				}
+				for(int i=0; i<splittedNew.length; i++) {
+					if(i==0) {
+						p.print(splittedOrg[i]);
+						p.print(spaces(spaceSize - splittedOrg[i].length()) + " ");
+					} else if(i==splittedNew.length) {
+						p.print(splittedNew[i]);
+					} else {
+						p.print(splittedNew[i]);
+						p.print(spaces(spaceSize - splittedNew[i].length()) + " ");
+					}
+				}
+				p.println();
+				p.flush();
+			}
 		}
 		p.flush();
 		p.close();
-		inputReader.close();
 		System.out.println("Prop file written at " + out.getAbsolutePath());
+	}
+	
+	public static String spaces(int count){
+		String spaces = "";
+		for(int i=0; i<count; i++){
+			spaces += " ";
+		}
+		return spaces;
 	}
 	
 	public static void visualizeSentenceProp(String[][] sentenceProp, int max){

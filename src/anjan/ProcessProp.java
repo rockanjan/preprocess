@@ -7,13 +7,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class ProcessProp {
-	static int spaceSize = 5;
+	static int spaceSize = 10; 
 	public static void main(String[] args) throws IOException {
 		if(args.length != 2){
 			System.err.println("Usage: <program> inputFile propstartcol");
 			System.err.println("NOTE:Output will be inputFile.propprocessed");
 			System.exit(1);
 		}
+		//index starts from 1
 		int PROP_START_COL = 0; //for test 5, for train and dev 6. train and dev have extra column which includes numbers
 		String input = args[0];
 		try{
@@ -40,6 +41,7 @@ public class ProcessProp {
 		while ((line = br.readLine()) != null) {
 			linenumber++;
 			line = line.trim();
+			//System.out.println("Processing line : " + linenumber);
 			if (!line.equals("")) {
 				String[] splitted = line.split("(\\s+)|(\\t+)");
 				int cols = splitted.length;
@@ -62,6 +64,7 @@ public class ProcessProp {
 				//System.out.println("Max Col : " + maxcol);
 				int verbCount = maxcol - PROP_START_COL;
 				int[] verbIndex = null;
+				//System.out.println(verbCount);
 				if (verbCount > 0)
 					verbIndex = new int[verbCount];
 				// int index=0;

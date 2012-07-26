@@ -6,6 +6,9 @@ public class DataRow {
 	private String verbOrNot;
 	private String bio;
 	private String arg;
+	public DataRow(){
+		
+	}
 	public DataRow(int index, String word, String verbOrNot, String bio, String arg) {
 		this.index = index;
 		this.word = word;

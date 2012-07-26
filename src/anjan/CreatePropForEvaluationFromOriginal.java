@@ -10,9 +10,9 @@ import java.io.PrintWriter;
  */
 public class CreatePropForEvaluationFromOriginal {
 	public static void main(String[] args) throws IOException {
-		int START_COL = 5; //zero indexed
+		int START_COL = 6; //zero indexed
 		int SPACE_SIZE = 10;
-		String inFile = "/home/anjan/work/conll05-backup/nopunct/devel/dev-set.nopunct" ;
+		String inFile = "/home/anjan/work/conll05-backup/nopunct/train/train-set.nopunct" ;
 		String outFile = inFile + ".eval.prop";
 		
 		BufferedReader br = new BufferedReader(new FileReader(inFile));
@@ -38,7 +38,7 @@ public class CreatePropForEvaluationFromOriginal {
 			} else {
 				if(col != 0) {
 					for(int i=0; i<row; i++) {
-						for(int j=START_COL; j<col; j++) {
+						for(int j=START_COL-1; j<col; j++) {
 							pw.print(sentence[i][j]);
 							if(j != col) {
 								 pw.print(spaces(SPACE_SIZE - sentence[i][j].length()) + " ");

@@ -23,8 +23,8 @@ public class RemovePunctuationFromPropTrainDev {
 
 	public static void main(String[] args) throws IOException {
 		args = new String[1];
-		//args[0] = "/home/anjan/work/conll05-backup/nopunct/train/train-set";
-		args[0] = "/home/anjan/work/conll05-backup/nopunct/devel/dev-set";
+		args[0] = "/home/anjan/work/conll05-backup/nopunct/train/train-set";
+		//args[0] = "/home/anjan/work/conll05-backup/nopunct/devel/dev-set";
 		int PROP_START_COL = 6; // starting with 0 index
 		String input = args[0];
 
@@ -46,7 +46,7 @@ public class RemovePunctuationFromPropTrainDev {
 			linenumber++;
 			line = line.trim();
 			if (!line.equals("")) {
-				String[] splitted = line.split("\\s+");
+				String[] splitted = line.split("(\\s+|\\t+)");
 				int cols = splitted.length;
 				if (cols < mincol)
 					mincol = cols;
@@ -62,16 +62,21 @@ public class RemovePunctuationFromPropTrainDev {
 				row++;
 			} else {
 				// display(sentenceProp, row, maxcol);
-				sentencenumber++;
 				int out_index = 0;
 				for (int j = 0; j < row; j++) {
-					// first two columns
 					if (!punctuations.contains(sentenceProp[j][0])) {
 						for (int i = 0; i < PROP_START_COL; i++) {
 							sentencePropOut[out_index][i] = sentenceProp[j][i];
 						}
 						out_index++;
 					}
+				}
+				//there can be sentences with single word which is a punctuation
+				if(out_index == 0) {
+					row = 0;
+					sentencePropOut = null;
+				} else {
+					sentencenumber++;
 				}
 				// System.out.println("Index : " + out_index);
 				// display(sentencePropOut, out_index, maxcol);
@@ -146,7 +151,8 @@ public class RemovePunctuationFromPropTrainDev {
 			}
 			pw.println();
 		}
-		pw.println();
+		if(row != 0)
+			pw.println();
 	}
 
 	public static void display(String[][] sentence, int row, int col) {
@@ -158,7 +164,8 @@ public class RemovePunctuationFromPropTrainDev {
 			}
 			System.out.println();
 		}
-		System.out.println();
+		if(row != 0)
+			System.out.println();
 	}
 
 	public static String spaces(int count) {
