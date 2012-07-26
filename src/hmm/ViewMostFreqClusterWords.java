@@ -1,7 +1,5 @@
 package hmm;
-/*
- * Not working!!!
- */
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -13,9 +11,11 @@ import java.util.TreeMap;
 
 public class ViewMostFreqClusterWords {
 	public static void main(String[] args) throws IOException {
-		int NUM = 5; //display top 5 words
-		int CLUSTERS = 40;
-		BufferedReader br = new BufferedReader(new FileReader("/home/anjan/work/srl/jul19/hmms/combined.word.hmm"));
+		int NUM = 10; //display top 5 words
+		int CLUSTERS = 80;
+		//String inFile = "/home/anjan/work/srl/jul19/hmms/combined.word.hmm";
+		String inFile = "/home/anjan/work/srl/jul11/hmms/combined.word.hmm";
+		BufferedReader br = new BufferedReader(new FileReader(inFile));
 		ClusterContent[] clusters = new ClusterContent[CLUSTERS];
 		for(int i=0; i<CLUSTERS; i++) {
 			clusters[i] = new ClusterContent();
@@ -54,7 +54,7 @@ public class ViewMostFreqClusterWords {
         //display
         System.out.print("Cluster " + counter + " : ");
         int dispCount = 0;
-        for(String key : map.keySet()) {
+        for(String key : sorted_map.keySet()) {
         	if(dispCount == num) break;
         	System.out.print(key + " ");
         	dispCount++;

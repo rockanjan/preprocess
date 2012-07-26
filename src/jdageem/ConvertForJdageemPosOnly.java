@@ -10,13 +10,13 @@ public class ConvertForJdageemPosOnly {
 	public static int N=50;
 	public static int maxLength = 10;
 	public static void main(String[] args) throws IOException{
-		String inFile = "/home/anjan/work/srl/jul19/hmms/combined.word.hmm.nocomma";
-		String outFile = "/home/anjan/work/srl/jul19/hmms/combined.nocomma.jdageem";
+		String inFile = "/home/anjan/Dropbox/research/srl/pos_depwsj15/combined.pos";
+		String outFile = "/home/anjan/Dropbox/research/srl/pos_depwsj15/combined.jdageem";
 		BufferedReader br = new BufferedReader(new FileReader(inFile));
 		PrintWriter pw = new PrintWriter(new File(outFile));
 		PrintWriter pw1 = new PrintWriter(new File(outFile + ".trunc"));
 		String line = "";
-		int INDEX = 1; //index of POS (or HMM)
+		int INDEX = 0; //index of POS (or HMM)
 		String[][] sequence = new String[N][1]; 
 		int i=0;
 		while( (line = br.readLine()) != null){

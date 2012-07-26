@@ -12,8 +12,8 @@ public class CreateIndexForSentences {
 	 * @throws IOException 
 	 */
 	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new FileReader("/home/anjan/work/srl/jul19/deps/wsj15/combined.word.dep"));
-		PrintWriter pw = new PrintWriter("/home/anjan/work/srl/jul19/deps/wsj15/combined.word.indexed.dep");
+		BufferedReader br = new BufferedReader(new FileReader("/home/anjan/Dropbox/research/srl/hmm400iter_depwsj10/combined.words.dep"));
+		PrintWriter pw = new PrintWriter("/home/anjan/Dropbox/research/srl/hmm400iter_depwsj10/combined.words.indexed.dep");
 		
 		String line = "";
 		int indexNumber = 0;

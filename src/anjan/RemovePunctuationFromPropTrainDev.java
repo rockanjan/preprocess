@@ -13,16 +13,18 @@ import java.util.List;
  */
 public class RemovePunctuationFromPropTrainDev {
 	public static final String[] punctuation_array = { "\\", "\\*\\*", "\\*",
-			"*", "!", "#", /* ",", */"`", "``", "\'\'", "\'", "(", ")", "{",
-			"}", ".", "?", "-", ":", ";", "=", "@" };
+		"*", "!", "#", 
+		",", "--", 
+		"`", "``", "\'\'", "\'", "(", ")", "{",
+		"}", ".", "?", "-", ":", ";", "=", "@" };
 	public static List<String> punctuations = new ArrayList<String>(
 			Arrays.asList(punctuation_array));
 	public static PrintWriter pw = null;
 
 	public static void main(String[] args) throws IOException {
 		args = new String[1];
-		args[0] = "/work/conll05-backup/train/train-set";
-		//args[0] = "/work/conll05st-release/devel/dev-set";
+		//args[0] = "/home/anjan/work/conll05-backup/nopunct/train/train-set";
+		args[0] = "/home/anjan/work/conll05-backup/nopunct/devel/dev-set";
 		int PROP_START_COL = 6; // starting with 0 index
 		String input = args[0];
 

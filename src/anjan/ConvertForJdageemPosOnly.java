@@ -10,8 +10,8 @@ public class ConvertForJdageemPosOnly {
 	public static int N=50;
 	public static int maxLength = 15;
 	public static void main(String[] args) throws IOException{
-		String inFile = "/home/anjan/work/srl/jul11/hmms/combined.word.hmm";
-		String outFile = "/home/anjan/work/srl/jul11/hmms/combined.hmm.jdageem";
+		String inFile = "/home/anjan/work/srl/jul19/hmms/combined.hmm40";
+		String outFile = "/home/anjan/work/srl/jul19/hmms/combined.hmm40.jdageem";
 		BufferedReader br = new BufferedReader(new FileReader(inFile));
 		PrintWriter pw = new PrintWriter(new File(outFile));
 		PrintWriter pw1 = new PrintWriter(new File(outFile + ".trunc"));
@@ -23,7 +23,7 @@ public class ConvertForJdageemPosOnly {
 			line = line.trim();
 			if(! "".equals(line)){
 				String[] row = line.split("( )|(\t)");
-				sequence[i][0] = row[1];
+				sequence[i][0] = row[0];
 				i++;
 			} else {
 				//write

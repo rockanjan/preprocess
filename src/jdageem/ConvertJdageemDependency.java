@@ -11,8 +11,8 @@ import java.io.PrintWriter;
 public class ConvertJdageemDependency {
 	
 	public static void main(String[] args) throws IOException {
-		String inFile = "/home/anjan/work/srl/jul19/deps/wsj15/combined.hmm.dep";
-		String outFile = "/home/anjan/work/srl/jul19/deps/wsj15/combined.hmm.alex.dep";
+		String inFile = "/home/anjan/Dropbox/research/srl/hmm1000iter_depwsj15/combined.dep";
+		String outFile = "/home/anjan/Dropbox/research/srl/hmm1000iter_depwsj15/combined.alex.dep";
 		
 		BufferedReader br = new BufferedReader(new FileReader(inFile));
 		

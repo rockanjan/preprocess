@@ -13,16 +13,19 @@ import java.util.List;
  */
 public class RemovePunctuationFromPropTest {
 	public static final String[] punctuation_array = { "\\", "\\*\\*", "\\*",
-			"*", "!", "#", /* ",", */"`", "``", "\'\'", "\'", "(", ")", "{",
+			"*", "!", "#", 
+			",", "--", 
+			"`", "``", "\'\'", "\'", "(", ")", "{",
 			"}", ".", "?", "-", ":", ";", "=", "@" };
+	
 	public static List<String> punctuations = new ArrayList<String>(
 			Arrays.asList(punctuation_array));
 	public static PrintWriter pw = null;
 
 	public static void main(String[] args) throws IOException {
 		args = new String[1];
-		args[0] = "/work/conll05st-release/test.brown/test-brown-set";
-		//args[0] = "/work/conll05st-release/test.wsj/test-wsj-set";
+		//args[0] = "/home/anjan/work/conll05-backup/nopunct/test.brown/test-brown-set"; //brown
+		args[0] = "/home/anjan/work/conll05-backup/nopunct/test.wsj/test-wsj-set"; //wsj
 		int PROP_START_COL = 2; // starting with 0 index
 		String input = args[0];
 
