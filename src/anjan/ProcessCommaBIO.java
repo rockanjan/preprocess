@@ -7,9 +7,14 @@ import java.io.PrintWriter;
 
 public class ProcessCommaBIO {
 	public ProcessCommaBIO(){}
-	final static int COL = 7;
-	final static int BIO_INDEX = COL - 2;
-	final static int CLASS_INDEX = COL - 1;
+	final static int COL = 10; //count of cols
+	final static int WORD_INDEX = 2; //index starts from 0
+	final static int BIO_INDEX = 
+								6;
+								//COL - 2;
+	final static int CLASS_INDEX = 
+								7;
+								//COL - 1;
 	
 	public static void main(String[] args) throws IOException{
 		if(args.length != 2){
@@ -24,7 +29,7 @@ public class ProcessCommaBIO {
 		while ( (line = br.readLine() ) != null){
 			if(! line.trim().equals("")) {
 				
-				String[] lineSplit = line.split(" ");
+				String[] lineSplit = line.split("(\\s+|\\t+)");
 				for(int i=0; i<lineSplit.length; i++){
 					sentence[lineCount][i] = lineSplit[i];
 				}
@@ -33,7 +38,7 @@ public class ProcessCommaBIO {
 				//do the processing
 				//displaySentence(sentence, lineCount);
 				for(int i=0; i<lineCount; i++){
-					if(sentence[i][0].equals(",")){
+					if(sentence[i][WORD_INDEX].equals(",") || sentence[i][WORD_INDEX].equals("--")){
 						if(sentence[i][BIO_INDEX].equals("B")){
 							//make this O
 							sentence[i][BIO_INDEX] = "O";
@@ -74,16 +79,18 @@ public class ProcessCommaBIO {
 	}
 	
 	public static void writeSentence(PrintWriter pw, String[][] sentence, int lineCount) throws IOException{
+		int spaceSize = 10;
 		for(int i=0; i<lineCount; i++){
 			for(int j=0; j<COL; j++){
 				pw.print(sentence[i][j]);
 				if(j != COL - 1){
-					 pw.print(" ");
+					 pw.print(spaces(spaceSize - sentence[i][j].length()) + " ");
 				}
 			}
 			pw.println();
 		}
 		pw.println();
+		pw.flush();
 	}
 	
 	public static void displaySentence(String[][] sentence, int lineCount){
@@ -94,5 +101,13 @@ public class ProcessCommaBIO {
 			System.out.println();
 		}
 		System.out.println();
+	}
+	
+	public static String spaces(int count){
+		String spaces = "";
+		for(int i=0; i<count; i++){
+			spaces += " ";
+		}
+		return spaces;
 	}
 }

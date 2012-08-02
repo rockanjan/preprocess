@@ -17,7 +17,7 @@ public class RemovePunctuations {
 	public static final int N = 50; // max length of sentence
 	public static final String[] punctuation_array = { "\\", "\\*\\*", "\\*",
 		"*", "!", "#", 
-		",", "--", 
+		//",", "--", 
 		"`", "``", "\'\'", "\'", "(", ")", "{",
 		"}", ".", "?", "-", ":", ";", "=", "@" };
 	

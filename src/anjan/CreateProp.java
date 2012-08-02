@@ -16,7 +16,7 @@ public class CreateProp {
 	public static void main(String[] args) throws IOException{
 		int spaceSize = 10;
 		if(args.length != 2){
-			System.err.println("Usage: <program> input-file org-eval-prop-file");
+			System.err.println("Usage: <program> input-file org-eval-prop-file"); //org-eval-prop-file needed for verbs
 			System.exit(1);
 		}
 		//count of each sentence

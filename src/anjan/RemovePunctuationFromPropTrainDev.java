@@ -14,7 +14,7 @@ import java.util.List;
 public class RemovePunctuationFromPropTrainDev {
 	public static final String[] punctuation_array = { "\\", "\\*\\*", "\\*",
 		"*", "!", "#", 
-		",", "--", 
+		//",", "--", 
 		"`", "``", "\'\'", "\'", "(", ")", "{",
 		"}", ".", "?", "-", ":", ";", "=", "@" };
 	public static List<String> punctuations = new ArrayList<String>(

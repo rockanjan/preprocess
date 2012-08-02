@@ -2,6 +2,7 @@ package hmm;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
@@ -34,6 +35,7 @@ public class ConvertToIntegerSequence {
 	}
 	
 	public void run() throws IOException{
+		File f = new File(inputFile);
 		BufferedReader br = new BufferedReader(new FileReader(inputFile)); //to make index
 		BufferedReader br2 = new BufferedReader(new FileReader(inputFile));
 		PrintWriter p = new PrintWriter(outputFile);
@@ -44,14 +46,14 @@ public class ConvertToIntegerSequence {
 		while( (line = br.readLine()) != null){
 			if(!line.trim().equals("")){
 				String[] splitted = line.split(" ");
-				String word = splitted[0];	
+				String word = splitted[0].toLowerCase();	
 				if(! wordIndex.containsKey(word)){
 					wordIndex.put(word, index++);
 				}
 			}
 		}
 		System.out.println("MaxIndex: " + (wordIndex.size() - 1)); //starts from 0
-		ObjectOutputStream fos = new ObjectOutputStream(new FileOutputStream("/tmp/word_index.bin"));
+		ObjectOutputStream fos = new ObjectOutputStream(new FileOutputStream(f.getParentFile() + "/" + "vocab_index.bin"));
 		fos.writeObject(wordIndex);
 		fos.close();
 		System.out.println("Word Index Saved");
@@ -60,7 +62,7 @@ public class ConvertToIntegerSequence {
 		while( (line = br2.readLine()) != null){
 			if(!line.trim().equals("")){
 				String[] splitted = line.split(" ");
-				String word = splitted[0];	
+				String word = splitted[0].toLowerCase();	
 				if(! wordIndex.containsKey(word)){
 					System.err.println("word not found in index : " + word);
 				}

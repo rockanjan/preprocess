@@ -7,14 +7,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 public class ConvertForJdageemPosOnly {
-	public static int N=50;
-	public static int maxLength = 10;
+	public static int N=200;
+	public static int maxLength = 15;
 	public static void main(String[] args) throws IOException{
-		String inFile = "/home/anjan/Dropbox/research/srl/pos_depwsj15/combined.pos";
-		String outFile = "/home/anjan/Dropbox/research/srl/pos_depwsj15/combined.jdageem";
+		String inFile = "/home/anjan/work/conll05-backup/punct/combined/combined.hmm.out";
+		String outFile = "/home/anjan/work/conll05-backup/punct/combined/combined.hmm.out.jdageem";
 		BufferedReader br = new BufferedReader(new FileReader(inFile));
 		PrintWriter pw = new PrintWriter(new File(outFile));
-		PrintWriter pw1 = new PrintWriter(new File(outFile + ".trunc"));
+		PrintWriter pw1 = new PrintWriter(new File(outFile + ".trunc" + maxLength));
 		String line = "";
 		int INDEX = 0; //index of POS (or HMM)
 		String[][] sequence = new String[N][1]; 

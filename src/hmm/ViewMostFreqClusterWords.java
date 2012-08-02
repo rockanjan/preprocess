@@ -14,7 +14,7 @@ public class ViewMostFreqClusterWords {
 		int NUM = 10; //display top 5 words
 		int CLUSTERS = 80;
 		//String inFile = "/home/anjan/work/srl/jul19/hmms/combined.word.hmm";
-		String inFile = "/home/anjan/work/srl/jul11/hmms/combined.word.hmm";
+		String inFile = "/home/anjan/work/conll05-backup/punct/combined/combined.hmm.words";
 		BufferedReader br = new BufferedReader(new FileReader(inFile));
 		ClusterContent[] clusters = new ClusterContent[CLUSTERS];
 		for(int i=0; i<CLUSTERS; i++) {
@@ -28,7 +28,7 @@ public class ViewMostFreqClusterWords {
 				int hmm = Integer.parseInt(splitted[0]);
 				//System.out.println(hmm);
 				String word = splitted[1];
-				clusters[hmm].add(word);
+				clusters[hmm].add(word.toLowerCase());
 			}
 		}
 		int counter = 0;

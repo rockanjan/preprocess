@@ -26,6 +26,9 @@ public class GenerateMultipleSentenceUsingCount {
 		File inCountFile = new File("/home/anjan/Dropbox/research/srl/dev/fei_data/basic/combined.basic.count");
 		File outFile = new File("/work/conll05st-release/hmms/new125-150iter/combined10_train_test_only_multiple_sentence");
 		*/
+		System.out.println("Input: " + args[0]);
+		System.out.println("Count: " + args[1]);
+		System.out.println("Output: " + args[2]);
 		BufferedReader readerSent = new BufferedReader(new FileReader(inSentenceFile));
 		BufferedReader readerCount = new BufferedReader(new FileReader(inCountFile));
 		BufferedReader readerCounter = new BufferedReader(new FileReader(inCountFile));

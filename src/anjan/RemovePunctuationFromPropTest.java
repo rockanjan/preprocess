@@ -14,7 +14,7 @@ import java.util.List;
 public class RemovePunctuationFromPropTest {
 	public static final String[] punctuation_array = { "\\", "\\*\\*", "\\*",
 			"*", "!", "#", 
-			",", "--", 
+			//",", "--", 
 			"`", "``", "\'\'", "\'", "(", ")", "{",
 			"}", ".", "?", "-", ":", ";", "=", "@" };
 	
@@ -25,7 +25,7 @@ public class RemovePunctuationFromPropTest {
 	public static void main(String[] args) throws IOException {
 		args = new String[1];
 		//args[0] = "/home/anjan/work/conll05-backup/nopunct/test.brown/test-brown-set"; //brown
-		args[0] = "/home/anjan/work/conll05-backup/nopunct/test.wsj/test-wsj-set"; //wsj
+		args[0] = "/home/anjan/work/conll05-backup/punct/test.wsj/test-wsj-set"; //wsj
 		int PROP_START_COL = 2; // starting with 0 index
 		String input = args[0];
 

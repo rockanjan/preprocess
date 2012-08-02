@@ -16,7 +16,7 @@ import java.util.List;
 public class RemovePunctuationsSaveComma {
 	public static final int N = 50; // max length of sentence
 	public static final String[] punctuation_array = { "\\", "\\*\\*", "\\*",
-			"*", "!", "#", ",", "`", "``", "\'\'", "\'", "(", ")", "{", "}",
+			"*", "!", "#", /*",",*/ "`", "``", "\'\'", "\'", "(", ")", "{", "}",
 			".", "?", "-", ":", ";", "=", "@" };
 
 	public static List<String> punctuations = new ArrayList<String>(

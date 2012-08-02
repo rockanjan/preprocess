@@ -13,8 +13,8 @@ public class ConvertMultipleLineToSingleLineSentence {
 	 */
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
-		BufferedReader br = new BufferedReader(new FileReader("/home/anjan/Dropbox/research/srl/combined.words.lower"));
-		String outFile = "/home/anjan/Dropbox/research/srl/combined.words.lower.sentence.line";
+		BufferedReader br = new BufferedReader(new FileReader("/home/anjan/work/conll05-backup/nopunct/combined/combined.single.words"));
+		String outFile = "/home/anjan/work/conll05-backup/nopunct/combined/combined.single.words.line";
 		PrintWriter pw = new PrintWriter(outFile);
 		String line = "";
 		String sentence = "";
@@ -24,6 +24,7 @@ public class ConvertMultipleLineToSingleLineSentence {
 				sentence += line + " ";
 			} else {
 				pw.println(sentence);
+				//pw.println();
 				sentence = "";
 			}
 		}

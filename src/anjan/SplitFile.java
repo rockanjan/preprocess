@@ -8,16 +8,17 @@ import java.io.PrintWriter;
 
 /*
  * Splits file into smaller ones for dependency tree induction
+ * If too many files (>4000) specified, linux gives an error (too many files open)
  */
 public class SplitFile {
 
 	public static void main(String[] args) throws IOException {
 		if (args.length != 2) {
 			System.err.println("Invalid arguments, "
-					+ "usage: <program> file numberofsplits");
+					+ "usage: <program> file size");
 			System.exit(1);
 		}
-		String outputPrefix = "wsj10-train_";
+		String outputPrefix = "combined.single.words-";
 		String outputSuffix = ".txt";
 		String inputFile = args[0];
 		int splitSize = -1;
@@ -26,12 +27,6 @@ public class SplitFile {
 		} catch (NumberFormatException e) {
 			System.err.println("Incorrect split size : " + args[1]);
 			System.exit(1);
-		}
-		File f = new File(inputFile);
-		PrintWriter[] out = new PrintWriter[splitSize];
-		for (int i = 0; i < splitSize; i++) {
-			out[i] = new PrintWriter(f.getParentFile() + "/" + outputPrefix
-					+ (i + 1) + outputSuffix);
 		}
 
 		BufferedReader br = new BufferedReader(new FileReader(inputFile));
@@ -59,7 +54,15 @@ public class SplitFile {
 		br = new BufferedReader(new FileReader(inputFile));
 		int currentCount = 0;
 		blankStart = true;
+
+		File f = new File(inputFile);
+		PrintWriter[] out = new PrintWriter[splitSize];
+		for (int i = 0; i < splitSize; i++) {
+			out[i] = new PrintWriter(f.getParentFile() + "/" + outputPrefix
+					+ (i + 1) + outputSuffix);
+		}
 		PrintWriter current = out[0];
+		
 		while ((line = br.readLine()) != null) {
 			line = line.trim();
 			if (!line.equals("")) {
@@ -68,14 +71,10 @@ public class SplitFile {
 			} else {
 				if (!blankStart) {
 					current.println();
-					// int fileIndex = (int) Math.ceil(currentCount /
-					// divisionSize) - 1;
 					int fileIndex = (int) currentCount / divisionSize;
 					if (fileIndex == splitSize) {
 						fileIndex = fileIndex - 1;
 					}
-					System.out.println("Current count: " + currentCount);
-					System.out.println("File Index : " + fileIndex);
 					currentCount++;
 					current = out[fileIndex];
 				}

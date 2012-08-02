@@ -3,11 +3,9 @@ package anjan;
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -44,7 +42,7 @@ public class IdentificationEvaluation {
 			
 			if (!bio.equals("")) {
 				//use the original training file
-				String[] splitted = bio.split(" ");
+				String[] splitted = bio.split("(\\s+|\\t+)");
 				bio = splitted[splitted.length - 1 ];
 				//System.out.println(bio);
 				// 3 cases, B, I or O
@@ -109,7 +107,7 @@ public class IdentificationEvaluation {
 			
 			if (!bio.equals("")) {
 				//use the original training file
-				String[] splitted = bio.split(" ");
+				String[] splitted = bio.split("(\\s+|\\t+)");
 				bio = splitted[splitted.length - 1 ];
 				// 3 cases, B, I or O
 				if (bio.equals("B")) {

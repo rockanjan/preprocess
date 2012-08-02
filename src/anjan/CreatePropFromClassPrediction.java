@@ -11,11 +11,6 @@ public class CreatePropFromClassPrediction {
 		String goldPropFile = "/home/anjan/Dropbox/research/srl/dev/final/gold/dev-set.nopunct.trunc50.prop";
 		String originalPropProcessedFile = "/home/anjan/Dropbox/research/srl/dev/final/dev.propprocesssed";
 		
-		/*
-		String originalFile = "/home/anjan/work/srl/jul11/dev.classification";
-		String taggedFile = "/home/anjan/work/srl/jul11/dev.classification.tagged";
-		*/
-		
 		String originalFile = "/home/anjan/work/srl/jul11/dev.predictediob.classification";
 		String taggedFile = "/home/anjan/work/srl/jul11/dev.classification.withpredictedbio.tag";
 		
